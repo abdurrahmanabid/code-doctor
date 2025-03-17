@@ -1,14 +1,21 @@
+// App.jsx
 import React from 'react';
-import FollowCursor from './Component/Coursor';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Navbar from './Component/Navbar';
+import Chat from './Page/Chat';
+import Home from './Page/Home';
 
+// App Component
 const App = () => {
   return (
-    <div className=''>
+    <Router>
       <Navbar/>
-      <FollowCursor/>
-    </div>
-  )
-}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/chat" element={<Chat />} />
+      </Routes>
+    </Router>
+  );
+};
 
-export default App
+export default App;
