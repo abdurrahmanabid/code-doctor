@@ -15,7 +15,7 @@ Experience CodeDoctor in action: [codedoctor.vercel.app](https://codedoctor.verc
 - 🏎 **Fast and Reliable**: Hosted on Vercel for high availability and performance.
 
 ## 📸 Screenshots
-![CodeDoctor Screenshot](src\assets\Readme\image.png)
+![CodeDoctor Screenshot](./src\assets\Readme\image.png)
 
 ## 📦 Installation
 If you want to run the project locally, follow these steps:
@@ -27,7 +27,7 @@ If you want to run the project locally, follow these steps:
 ### Clone the Repository
 ```bash
 git clone https://github.com/abdurrahmanabid/code-doctor.git
-cd codedoctor
+cd code-doctor
 ```
 
 ### Install Dependencies
@@ -66,7 +66,7 @@ This project is licensed under the MIT License.
 ## 📞 Contact
 For any inquiries or suggestions, feel free to reach out:
 - **Email**: abdurrahmanabid33@gmail.com
-- **Twitter**: [@yourhandle](https://twitter.com/tweet_ab_rahman)
+- **Twitter**: [Ab Rahman](https://twitter.com/tweet_ab_rahman)
 
 ---
 Give CodeDoctor a try today: [codedoctor.vercel.app](https://codedoctor.vercel.app) 🚀
