@@ -53,7 +53,7 @@ const Chat = () => {
 
     try {
       const { data } = await axios.post(
-        "https://backend-beta-olive.vercel.app/ai/get-review",
+        import.meta.env.VITE_AI_API,
         { code: messages }
       );
       console.log("🚀 ~ sendMessage ~ data:", data?.review);
