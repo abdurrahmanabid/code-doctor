@@ -1,12 +1,73 @@
-# React + Vite
+# CodeDoctor - AI-Powered Chatbot for Developers
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![Live Demo](https://img.shields.io/badge/Live-Demo-green)](https://codedoctor.vercel.app)
 
-Currently, two official plugins are available:
+CodeDoctor is an AI-powered chatbot designed to assist developers by providing intelligent conversation and solving any programming-related queries. Whether you need help debugging code, understanding algorithms, or writing efficient scripts, CodeDoctor is here to assist.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Live Demo
+Experience CodeDoctor in action: [codedoctor.vercel.app](https://codedoctor.vercel.app)
 
-## Expanding the ESLint configuration
+## 🛠 Features
+- 💬 **AI-Powered Chat**: Engage in real-time conversations with an intelligent AI bot.
+- 🖥 **Code Debugging**: Get assistance in debugging and improving your code.
+- ⚡ **Multi-Language Support**: Works with various programming languages like Python, JavaScript, C++, Java, and more.
+- 📚 **Code Explanations**: Understand complex concepts with detailed explanations.
+- 🏎 **Fast and Reliable**: Hosted on Vercel for high availability and performance.
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📸 Screenshots
+![CodeDoctor Screenshot](src\assets\Readme\image.png)
+
+## 📦 Installation
+If you want to run the project locally, follow these steps:
+
+### Prerequisites
+- Node.js (>=16)
+- NPM or Yarn
+
+### Clone the Repository
+```bash
+git clone https://github.com/abdurrahmanabid/code-doctor.git
+cd codedoctor
+```
+
+### Install Dependencies
+```bash
+npm install
+# or
+yarn install
+```
+
+### Run the Development Server
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+Visit `http://localhost:3000` in your browser to see the app in action.
+
+## 👨‍💻 Technologies Used
+- **Frontend**: Next.js, Tailwind CSS
+- **Backend**: Node.js, Express
+- **AI Model**: OpenAI API (or any LLM service)
+- **Hosting**: Vercel
+
+## 🤝 Contributing
+We welcome contributions! If you'd like to contribute:
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature-name`)
+3. Commit your changes (`git commit -m 'Add feature'`)
+4. Push to your branch (`git push origin feature-name`)
+5. Open a Pull Request
+
+## 📜 License
+This project is licensed under the MIT License.
+
+## 📞 Contact
+For any inquiries or suggestions, feel free to reach out:
+- **Email**: abdurrahmanabid33@gmail.com
+- **Twitter**: [@yourhandle](https://twitter.com/tweet_ab_rahman)
+
+---
+Give CodeDoctor a try today: [codedoctor.vercel.app](https://codedoctor.vercel.app) 🚀
+
