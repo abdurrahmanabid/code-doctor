@@ -15,7 +15,7 @@ Experience CodeDoctor in action: [codedoctor.vercel.app](https://codedoctor.verc
 - 🏎 **Fast and Reliable**: Hosted on Vercel for high availability and performance.
 
 ## 📸 Screenshots
-![CodeDoctor Screenshot](./src\assets\Readme\image.png)
+![CodeDoctor Screenshot](./src/assets/Readme/image.png)
 
 ## 📦 Installation
 If you want to run the project locally, follow these steps:
