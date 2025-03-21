@@ -1,77 +1,96 @@
-import React, { useEffect, useRef, useState } from 'react';
-import CodeEditor from './../Component/CodeEditor';
+import axios from "axios";
+import "highlight.js/styles/github-dark.css"; // Dark theme for code highlighting
+import { Send } from "lucide-react";
+import React, { useState } from "react";
+import ReactMarkdown from "react-markdown";
+import rehypeHighlight from "rehype-highlight";
+import CodeEditor1 from "../Component/CodeEditor";
 
 const Chat = () => {
-  const [messages, setMessages] = useState([]);
-  const [inputValue, setInputValue] = useState('');
-  const messagesEndRef = useRef(null);
-  
-  // Auto scroll to bottom when messages change
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
-  
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  const [messages, setMessages] = useState("");
+  const [chatHistory, setChatHistory] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const sendMessage = async () => {
+    if (!messages.trim()) return;
+
+    setChatHistory((prev) => [...prev, { text: messages, sender: "user" }]);
+    setMessages("");
+    setLoading(true);
+
+    try {
+      const { data } = await axios.post(
+        "https://backend-beta-olive.vercel.app/ai/get-review",
+        { code: messages }
+      );
+      console.log("🚀 ~ sendMessage ~ data:", data?.review);
+      setChatHistory((prev) => [...prev, { text: data?.review, sender: "ai" }]);
+    } catch (error) {
+      console.error("Error fetching response:", error);
+      setChatHistory((prev) => [
+        ...prev,
+        { text: "Error: Unable to get a response.", sender: "ai" },
+      ]);
+    } finally {
+      setLoading(false);
+    }
   };
-  
-  const handleSendMessage = (e) => {
-    e.preventDefault();
-    if (inputValue.trim() === '') return;
-    
-    // Add user message
-    const newMessages = [...messages, { text: inputValue, isUser: true }];
-    setMessages(newMessages);
-    setInputValue('');
-    
-    // Simulate AI response after a short delay
-    setTimeout(() => {
-      setMessages([...newMessages, { 
-        text: "This is a sample response from the assistant.", 
-        isUser: false 
-      }]);
-    }, 1000);
-  };
+  if (chatHistory.length === 0) {
+    return (
+      <div>
+        <div className="flex items-center gap-2 p-4 md:w-[70%] mx-auto md:mt-[20%] mt-[70%]">
+          
+          <CodeEditor1 messages={messages} setMessages={setMessages} />
+          <button
+            onClick={sendMessage}
+            disabled={loading}
+            className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex items-center gap-2 ${
+              loading ? "opacity-50 cursor-not-allowed" : ""
+            }`}
+          >
+            <Send size={20} />
+            {loading ? "Loading..." : "Send"}
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div className="flex flex-col h-screen bg-gray-900 text-white">
-      {/* Header */}
-      <div className="p-4 flex items-center border-b border-gray-700">
-        <div className="text-blue-400 mr-2">
-          <svg viewBox="0 0 24 24" width="24" height="24" className="fill-current">
-            <path d="M12,2C6.48,2,2,6.48,2,12s4.48,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,18c-3.31,0-6-2.69-6-6s2.69-6,6-6s6,2.69,6,6 S15.31,18,12,18z"/>
-          </svg>
-        </div>
-        <div>
-          <h1 className="text-xl font-bold">Hi, I'm DeepSeek.</h1>
-          <p className="text-sm text-gray-400">How can I help you today?</p>
-        </div>
-      </div>
-      
-      {/* Messages Container */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
-        {messages.map((message, index) => (
-          <div 
-            key={index} 
-            className={`flex ${message.isUser ? 'justify-start' : 'justify-end'}`}
+    <div className="w-full h-screen flex flex-col">
+      <h2 className="text-lg font-semibold mb-2 text-center p-4">Code Chat</h2>
+
+      {/* Chat Messages */}
+      <div className="flex-1 overflow-y-auto p-4 md:w-[60%] mx-auto space-y-20 max-h-[70%]">
+        {chatHistory.map((msg, index) => (
+          <div
+            key={index}
+            className={`p-2 my-1 rounded shadow-sm mb-10 ${
+              msg.sender === "user"
+                ? "self-end ml-auto bg-gray-600 border border-gray-800 text-white rounded-lg max-w-[60%]"
+                : "self-start font-mono"
+            }`}
           >
-            <div 
-              className={`max-w-xs md:max-w-md lg:max-w-lg xl:max-w-xl rounded-lg px-4 py-2 ${
-                message.isUser 
-                  ? 'bg-gray-700 text-white' 
-                  : 'bg-blue-600 text-white'
-              }`}
-            >
-              {message.text}
-            </div>
+            <ReactMarkdown rehypePlugins={[rehypeHighlight]}>
+              {msg.text}
+            </ReactMarkdown>
           </div>
         ))}
-        <div ref={messagesEndRef} />
       </div>
-      
-      {/* Input Area */}
-      <div className="p-4 border-t border-gray-700">
-        <CodeEditor/>
+
+      {/* Input Section */}
+      <div className="flex items-center gap-2 p-4 border-t fixed bottom-0 min-w-full">
+        <CodeEditor1 messages={messages} setMessages={setMessages} />
+        <button
+          onClick={sendMessage}
+          disabled={loading}
+          className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex items-center gap-2 ${
+            loading ? "opacity-50 cursor-not-allowed" : ""
+          }`}
+        >
+          <Send size={20} />
+          {loading ? "Loading..." : "Send"}
+        </button>
       </div>
     </div>
   );

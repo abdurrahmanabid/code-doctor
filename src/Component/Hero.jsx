@@ -1,5 +1,6 @@
 import Lottie from 'lottie-react';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import animationData from './../assets/hero.json';
 
 const Hero = () => {
@@ -20,12 +21,12 @@ const Hero = () => {
           Advanced coding solutions powered by artificial intelligence to streamline development workflows and enhance productivity across enterprise environments.
         </p>
         <div className="flex flex-col xs:flex-row gap-3 sm:gap-4 justify-center md:justify-start">
-          <button className="bg-blue-600 text-white px-4 sm:px-6 py-2 rounded hover:bg-blue-700 transition duration-300 text-xs sm:text-sm font-medium">
+          <Link className="bg-blue-600 text-white px-4 sm:px-6 py-2 rounded hover:bg-blue-700 transition duration-300 text-xs sm:text-sm font-medium" to={"/chat"}>
             Get Started
-          </button>
-          <button className="bg-transparent border border-gray-600 text-gray-300 px-4 sm:px-6 py-2 rounded hover:border-gray-400 hover:text-white transition duration-300 text-xs sm:text-sm font-medium">
+          </Link>
+          <Link className="bg-transparent border border-gray-600 text-gray-300 px-4 sm:px-6 py-2 rounded hover:border-gray-400 hover:text-white transition duration-300 text-xs sm:text-sm font-medium">
             Documentation
-          </button>
+          </Link>
         </div>
       </div>
 
