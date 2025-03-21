@@ -127,7 +127,7 @@ const Chat = () => {
       <h2 className="text-lg font-semibold mb-2 text-center p-4">Code Chat</h2>
 
       {/* Chat Messages */}
-      <div className="flex-1 overflow-y-auto p-4 md:w-[60%] mx-auto space-y-20 max-h-[70%]">
+      <div className="flex-1 overflow-y-auto p-4 md:w-[60%] mx-auto space-y-20 max-h-[70%] hide-scrollbar">
         {chatHistory.map((msg, index) => (
           <div
             key={index}
@@ -163,12 +163,12 @@ const Chat = () => {
       </div>
 
       {/* Input Section */}
-      <div className="flex items-center gap-2 p-4 border-t fixed bottom-0 min-w-full">
+      <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 flex items-center justify-center gap-2 p-4 min-w-full md:min-w-[70%] mx-auto">
         <CodeEditor1 messages={messages} setMessages={setMessages} />
         <button
           onClick={sendMessage}
           disabled={loading || isTyping}
-          className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex items-center gap-2 ${
+          className={`bg-gray-700 text-white font-bold py-2 px-4 rounded flex items-center gap-2 ${
             (loading || isTyping) ? "opacity-50 cursor-not-allowed" : ""
           }`}
         >

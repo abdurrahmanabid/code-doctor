@@ -21,6 +21,7 @@ const CodeEditor1 = ({ messages, setMessages }) => {
           overflowY: "auto",
           resize: "vertical",
         }}
+        className="custom-scrollbar"
         autoFocus
       />
     </div>

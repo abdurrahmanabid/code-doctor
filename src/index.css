@@ -1,6 +1,25 @@
 @import "tailwindcss";
 
-/* Webkit (Chrome, Edge, Safari) */
-::-webkit-scrollbar {
+.hide-scrollbar::-webkit-scrollbar {
   width: 0px;
 }
+/* Custom Dark Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 10px; /* Slightly wider for better usability */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #1a1a1a; /* Dark background for the track */
+  border-radius: 5px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #333; /* Dark gray thumb */
+  border-radius: 5px;
+  border: 2px solid #1a1a1a; /* Adds spacing around thumb */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Lighter gray on hover for better visibility */
+}
+
